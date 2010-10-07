@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<ul id="template">
+    <li></li>
+</ul>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="pure.js"></script>
+<script type="text/javascript">
+    var data = {
+      legs:4,
+      animals:[
+        {name:'dog', legs:4},
+        {name:'cat', legs:4},
+        {name:'bird', legs:2},
+        {name:'mouse', legs:4}
+      ]
+    };
+
+    var directive = {
+        "li": {
+            "animal<-animals": {
+                ".": "animal.name"
+            },
+            sort: function(a, b){
+                return a.name > b.name ? 1 : -1;
+            },
+            filter: function(a){
+                return a.context.legs === a.item.legs;
+            }
+        }
+    };
+
+    $("ul#template").render(data, directive);
+</script>
+</body>
+</html>

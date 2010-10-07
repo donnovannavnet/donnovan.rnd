@@ -33,22 +33,36 @@ Todos.mainPage = SC.Page.design({
         })
     }),
 
-    middleView: SC.ScrollView.design({
-      hasHorizontalScroller: NO,
-      layout: { top: 36, bottom: 32, left: 0, right: 0 },
-      backgroundColor: 'white',
-
-      contentView: SC.ListView.design({
-          contentBinding: 'Todos.tasksController.arrangedObjects',
-          selectionBinding: 'Todos.tasksController.selection',
-          contentValueKey: "description",
-          contentCheckboxKey: "isDone",
-          rowHeight: 21,
-          canEditContent: YES,
-          canDeleteContent: YES,
-          target: "Todos.tasksController",
-          action: "toggleDone"
-      })
+    middleView: SC.SplitView.design({
+        layout: { top: 36, bottom: 32, left: 0, right: 0 },
+        layoutDirection: SC.LAYOUT_HORIZONTAL,
+        autoresizeBehavior: SC.RESIZE_TOP_LEFT,
+        defaultThickness: 0.8,
+        topLeftView: SC.ScrollView.design({
+            hasHorizontalScroller: NO,
+            layout: { top: 36, bottom: 32, left: 0, right: 0 },
+            backgroundColor: "white",
+            contentView: SC.ListView.design({
+                contentBinding: 'Todos.tasksController.arrangedObjects',
+                selectionBinding: 'Todos.tasksController.selection',
+                contentValueKey: "description",
+                contentCheckboxKey: "isDone",
+                rowHeight: 21,
+                canEditContent: YES,
+                canDeleteContent: YES,
+                target: "Todos.tasksController",
+                action: "toggleDone"
+            })
+        }),
+        topLeftMinThickness: 150,
+        topLeftMaxThickness: 250,
+        dividerView: SC.SplitDividerView.design({
+          layout: {}
+        }),
+        bottomRightView: SC.LabelView.design({
+            textAlign: SC.ALIGN_CENTER,
+            valueBinding: "Todos.tasksController.summary"
+        })
     }),
 
     bottomView: SC.ToolbarView.design({

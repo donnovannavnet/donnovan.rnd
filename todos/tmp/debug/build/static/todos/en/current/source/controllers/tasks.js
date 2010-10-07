@@ -53,7 +53,7 @@ Todos.tasksController = SC.ArrayController.create(
         //activate inline editor once UI can repaint
         this.invokeLater(function(){
             var contentIndex = this.indexOf(task);
-            var list = Todos.mainPage.getPath('mainPane.middleView.contentView');
+            var list = Todos.mainPage.getPath('mainPane.middleView.topLeftView.contentView');
             var listItem = list.itemViewForContentIndex(contentIndex);
             listItem.beginEditing();
         });
