@@ -1,0 +1,16 @@
+/* >>>>>>>>>> BEGIN source/resources/style.css */
+.top{
+    height: 30px;
+    background-color: #FFF;
+    position: relative;
+    top: 0;
+}
+.middle{
+
+}
+.bottom{
+    height: 30px;
+    background-color: #FFF;
+    position: relative;
+    bottom: 0;
+}
