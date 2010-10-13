@@ -14,5 +14,4 @@ TvOnOff.Tv.FIXTURES = [
         isOn: false
     }
 
-];
-; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('tv_on_off');
+];; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('tv_on_off');

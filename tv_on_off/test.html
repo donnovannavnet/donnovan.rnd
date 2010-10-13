@@ -1,0 +1,25 @@
+<html>
+<head></head>
+<body>
+    <div id="results">
+    </div>
+</body>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+//    $.get("http://ec2-184-72-30-126.us-west-1.compute.amazonaws.com:8080/tvs/0/state", callBack, "jsonp");
+//    $.getJSON("http://ec2-184-72-30-126.us-west-1.compute.amazonaws.com:8080/tvs/0?jsoncallback=?", callBack);
+//    $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?", callBack);
+$.ajax({
+  url: "http://ec2-184-72-30-126.us-west-1.compute.amazonaws.com:8080/tvs/0/state",
+  type: "PUT",
+  data: {"state":"on"},
+  success: callBack,
+  dataType: "json"
+});
+    function callBack(data){
+        alert("here");
+        console.log(data);
+//        $("#results").html(response);
+    }
+</script>
+</html>

@@ -22,9 +22,9 @@ TvOnOff.main = function main() {
     // Step 2. Set the content property on your primary controller.
     // This will make your app come alive!
 
-    var query = SC.Query.local(TvOnOff.Tv);
-    var tvs = TvOnOff.store.find(query);
-    TvOnOff.tvController.set("content", tvs.objectAt(0));
+
+    var tvs = TvOnOff.store.find(TvOnOff.TVS_QUERY);
+    TvOnOff.tvController.set("content", tvs);
 
 };
 

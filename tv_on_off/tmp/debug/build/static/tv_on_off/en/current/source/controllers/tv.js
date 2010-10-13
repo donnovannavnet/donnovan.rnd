@@ -10,36 +10,28 @@
 
  @extends SC.Controller
  */
-TvOnOff.tvController = SC.ObjectController.create(
+TvOnOff.tvController = SC.ArrayController.create(
     /** @scope TvOnOff.tvController.prototype */ {
     turnOn: function() {
-        var middleView = TvOnOff.mainPage.getPath("mainPane.middleView");
-        this.set("isOn", true);
-
-        this.invokeLater(function() {
-            var labelView = TvOnOff.mainPage.getPath("mainPane.middleView");
-            labelView.set("Value", this.currentState());
-            console.log(this.currentState());
-        });
-
+        this.updateState("on");
 
         return true;
     },
+
     turnOff: function() {
-        var middleView = TvOnOff.mainPage.getPath("mainPane.middleView");
-        this.set("isOn", false);
-
-        this.invokeLater(function() {
-            var labelView = TvOnOff.mainPage.getPath("mainPane.middleView");
-            labelView.set("Value", this.currentState());
-            console.log(this.currentState());
-        });
+        this.updateState("off");
 
         return true;
     },
-    currentState: function() {
-        return this.get("isOn") ? "On" : "Off";
-    }.property('isOn')
 
+    updateState: function(state) {
+        this.invokeLater(function() {
+            this.selection().forEach(function(item) {
+                item.set("state", state);
+                var url = TvOnOff.tvServiceUrl + "/" + item.get("guid") + "/state";
+                SC.Request.putUrl(url, {state: state}).json().send();
+            });
+        });
+    }
 });
 ; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('tv_on_off');

@@ -5,3 +5,6 @@
 
 # Add initial buildfile information here
 config :all, :required => :sproutcore
+
+# SET UP PROXY
+proxy "/tvs", :to => "ec2-184-72-30-126.us-west-1.compute.amazonaws.com:8080"

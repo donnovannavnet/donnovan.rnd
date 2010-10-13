@@ -14,7 +14,9 @@
 TvOnOff.Tv = SC.Record.extend(
     /** @scope TvOnOff.Tv.prototype */ {
 
-    name: SC.Record.attr(String),
-    isOn: SC.Record.attr(Boolean)
+    make: SC.Record.attr(String),
+    model: SC.Record.attr(String),
+    state: SC.Record.attr(String)
+    
 });
 ; if ((typeof SC !== 'undefined') && SC && SC.scriptDidLoad) SC.scriptDidLoad('tv_on_off');

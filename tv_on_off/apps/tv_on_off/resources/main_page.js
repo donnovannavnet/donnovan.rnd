@@ -11,7 +11,7 @@ TvOnOff.mainPage = SC.Page.design({
     // Add childViews to this pane for views to display immediately on page
     // load.
     mainPane: SC.MainPane.design({
-        childViews: 'toolbarView middleView'.w(),
+        childViews: 'toolbarView tvsView'.w(),
 
         toolbarView: SC.ToolbarView.design({
             layout: { top: 0, left: 0, right: 0, height: 36 },
@@ -36,12 +36,15 @@ TvOnOff.mainPage = SC.Page.design({
                 action: "turnOff"
             })
         }),
-        middleView: SC.LabelView.design({
-            layout: { top: 36, bottom: 0, left: 0, right: 0 },
-            controlSize: SC.LARGE_CONTROL_SIZE,
-            fontWeight: SC.BOLD_WEIGHT,
-            backgroundColor: "black",
-            valueBinding: "TvOnOff.tvController.currentState"
+        tvsView : SC.ScrollView.design({
+            layout: { top: 36, bottom: 32, left: 0, right: 0 },
+            hasHorizontalScroller: NO,
+            backgroundColor: 'white',
+
+            contentView: SC.ListView.design({
+                contentBinding: 'TvOnOff.tvController.arrangedObjects',
+                selectionBinding: 'TvOnOff.tvController.selection'
+            })
         })
     })
 });
