@@ -26,7 +26,6 @@ TvOnOff.TvsDataSource = SC.DataSource.extend(
 
         if (query != TvOnOff.TVS_QUERY) return false;
 
-
         var url = TvOnOff.tvServiceUrl;
 
         SC.Request

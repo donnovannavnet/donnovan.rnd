@@ -1,32 +1,17 @@
-// ==========================================================================
-// Project:   TvOnOff
-// Copyright: ©2010 My Company, Inc.
-// ==========================================================================
-/*globals TvOnOff */
-
-// This is the function that will start your app running.  The default
-// implementation will load any fixtures you have created then instantiate
-// your controllers and awake the elements on your page.
-//
-// As you develop your application you will probably want to override this.
-// See comments for some pointers on what to do next.
-//
 TvOnOff.main = function main() {
 
-    // Step 1: Instantiate Your Views
-    // The default code here will make the mainPane for your application visible
-    // on screen.  If you app gets any level of complexity, you will probably
-    // create multiple pages and panes.
-    TvOnOff.getPath('mainPage.mainPane').append();
-
-    // Step 2. Set the content property on your primary controller.
-    // This will make your app come alive!
-
+    SC.routes.add(':page', TvOnOff.routes, 'gotoRoute');
+    SC.routes.add(':', TvOnOff.routes, 'gotoRoute');
 
     var tvs = TvOnOff.store.find(TvOnOff.TVS_QUERY);
     TvOnOff.tvController.set("content", tvs);
 
 };
+
+TvOnOff.refreshTvStore = function() {
+    var tvs = TvOnOff.store.find(TvOnOff.TVS_QUERY).refresh();
+    TvOnOff.tvController.set("content", tvs);
+}
 
 function main() {
     TvOnOff.main();
