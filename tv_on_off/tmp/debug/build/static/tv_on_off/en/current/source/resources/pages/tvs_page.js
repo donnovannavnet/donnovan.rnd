@@ -5,29 +5,16 @@ TvOnOff.tvsPage = SC.Page.design({
         toolbarView: SC.ToolbarView.design({
             layout: { top: 0, left: 0, right: 0, height: 36 },
             anchorLocation: SC.ANCHOR_TOP,
-            childViews: "backView labelView onButton offButton".w(),
+            childViews: "backView labelView".w(),
             backView: SC.ButtonView.design({
                 layout: { centerY: 0, height: 24, left: 8, width: 100 },
                 title:  "Back",
                 action: "goBack"
             }),
             labelView: SC.LabelView.design({
-                layout: { centerY: 0, height: 24, left: 116, width: 200 },
-                controlSize: SC.LARGE_CONTROL_SIZE,
+                layout: { centerY: 0, height: 20, left: 116, width: 200 },
                 fontWeight: SC.BOLD_WEIGHT,
                 value: "Manage your TVs"
-            }),
-            onButton: SC.ButtonView.design({
-                layout: { centerY: 0, height: 24, right: 124, width: 100 },
-                title:  "On",
-                target: "TvOnOff.tvController",
-                action: "turnOn"
-            }),
-            offButton: SC.ButtonView.design({
-                layout: { centerY: 0, height: 24, right: 12, width: 100 },
-                title:  "Off",
-                target: "TvOnOff.tvController",
-                action: "turnOff"
             })
         }),
         tvsView : SC.ScrollView.design({

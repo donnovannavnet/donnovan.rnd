@@ -1,3 +1,11 @@
-.selected{
-    background-color: #DFDFDF;
+div.tv{
+    margin-left: 8px;
+}
+
+div.tv button.on{
+    margin-left: 10px;
+}
+
+div.tv button.off{
+    margin-left: 4px;
 }

@@ -20,13 +20,13 @@ TvOnOff.TvListItemView = SC.View.extend(SC.ContentDisplay, {
         var idx = this.get("contentIndex");
         var content = this.get("content");
 
-        var container = SC.$("<div>");
+        var container = SC.$("<div class='tv'>");
         container.append(SC.$("<input class='contentIndex' type='hidden' value='%@'>".fmt(this.get("contentIndex"))));
-        container.append(SC.$("<span>").append("%@ (%@) - %@".fmt(content.get("make"), content.get("model"), content.get("state"))));
+        container.append(SC.$("<span>").append("%@ (%@)".fmt(content.get("make"), content.get("model"))));
 
-        container.append(SC.$("<input class='on' type='button' value='on'>"))
-        container.append(SC.$("<input class='off' type='button' value='off'>"))
-        context = context.push(container.html());
+        container.append(SC.$("<button class='on' type='button'>").append("on"));
+        container.append(SC.$("<button class='off' type='button'>").append("off"));
+        context = context.push(SC.$("<div>").append(container).html());
 
         sc_super();
     }
