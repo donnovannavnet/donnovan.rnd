@@ -36,8 +36,12 @@ TvOnOff.tvsPage = SC.Page.design({
             backgroundColor: 'white',
 
             contentView: SC.ListView.design({
-                contentBinding: 'TvOnOff.tvController.arrangedObjects',
-                selectionBinding: 'TvOnOff.tvController.selection'
+                contentBinding: 'TvOnOff.tvController',
+                selectionBinding: 'TvOnOff.tvController.selection',
+                exampleView: TvOnOff.TvListItemView.extend({
+                    controller: TvOnOff.tvController
+                }),
+                rowHeight: 30
             })
         }),
         goBack: function() {
